@@ -12,14 +12,15 @@ import java.util.List;
  *
  * @author dimov
  */
-@RequestMapping("/items")
+@RequestMapping
 @RestController
 public class ItemController {
 
     @Autowired
     private ItemService itemService;
 
-    @GetMapping
+    @GetMapping("/items")
+    @CrossOrigin(origins = "http://localhost:4200")
     public List<Item> getAllItems(){
         return itemService.getAllitems();
     }
