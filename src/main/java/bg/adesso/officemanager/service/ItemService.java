@@ -1,6 +1,6 @@
 package bg.adesso.officemanager.service;
 
-import bg.adesso.officemanager.Item;
+import bg.adesso.officemanager.model.Item;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -24,8 +24,8 @@ public class ItemService {
         return itemList;
     }
 
-    public Item getItem(int id) {
-        return itemList.get(id);
+    public Item getItem(String id) {
+        return itemList.stream().filter(i -> i.getId().equals(id)).findFirst().get();
     }
 
     public void addItem(Item item) {
