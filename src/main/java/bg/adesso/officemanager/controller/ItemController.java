@@ -22,12 +22,12 @@ public class ItemController {
     @GetMapping
     @CrossOrigin(origins = "http://localhost:4200")
     public List<Item> getAllItems(){
-        return itemService.getAllitems();
+        return itemService.getAllItems();
     }
 
     @GetMapping("{id}")
     public Item getItem(@RequestParam String id){
-        return itemService.getItem(id);
+        return itemService.getItemById(id);
     }
 
     @PostMapping
@@ -37,6 +37,6 @@ public class ItemController {
 
     @DeleteMapping("{id}")
     public void deleteItem(@RequestParam String id){
-        itemService.deleteItem(id);
+        itemService.deleteItemById(id);
     }
 }
