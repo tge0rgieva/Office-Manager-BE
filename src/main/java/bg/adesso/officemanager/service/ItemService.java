@@ -1,10 +1,10 @@
 package bg.adesso.officemanager.service;
 
 import bg.adesso.officemanager.model.Item;
+import bg.adesso.officemanager.repository.ItemRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -14,25 +14,22 @@ import java.util.List;
  */
 @Service
 public class ItemService {
+    @Autowired
+    private ItemRepository itemRepository;
 
-    List<Item> itemList = new ArrayList<>(Arrays.asList(new Item("1", "Grüner Tee", "Die Teeblätter werden im Gegensatz zu schwarzem Tee nicht fermentiert"),
-            new Item("2", "Lavazza Kaffe", "Für Menschen, die den Tag mit der Energieladung beginnen möchten"),
-            new Item("3", "Gelb Bananen", "Bananen")
-    ));
-
-    public List<Item> getAllitems() {
-        return itemList;
+    public List<Item> getAllItems() {
+        return itemRepository.findAll();
     }
 
-    public Item getItem(String id) {
-        return itemList.stream().filter(i -> i.getId().equals(id)).findFirst().get();
+    public Item getItemById(String id) {
+        return itemRepository.findAll().stream().filter(i -> i.getId().equals(id)).findFirst().get();
     }
 
     public void addItem(Item item) {
-        itemList.add(item);
+        itemRepository.save(item);
     }
 
-    public void deleteItem(String id) {
-        itemList.removeIf(i -> i.getId().equals(id));
+    public void deleteItemById(String id) {
+        itemRepository.deleteById(id);
     }
 }

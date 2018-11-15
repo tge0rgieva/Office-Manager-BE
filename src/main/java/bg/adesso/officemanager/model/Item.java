@@ -15,7 +15,8 @@ public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private String id;
-    private String title;
+    private String name;
+    private String category;
     private String description;
-
+    private String pictureUrl;
 }
