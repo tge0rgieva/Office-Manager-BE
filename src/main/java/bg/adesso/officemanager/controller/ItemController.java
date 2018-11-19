@@ -13,6 +13,7 @@ import java.util.List;
  * @author dimov
  */
 @RequestMapping("/items")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class ItemController {
 
@@ -20,7 +21,7 @@ public class ItemController {
     private ItemService itemService;
 
     @GetMapping
-    @CrossOrigin(origins = "http://localhost:4200")
+
     public List<Item> getAllItems(){
         return itemService.getAllItems();
     }
