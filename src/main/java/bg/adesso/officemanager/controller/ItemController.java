@@ -21,13 +21,12 @@ public class ItemController {
     private ItemService itemService;
 
     @GetMapping
-
     public List<Item> getAllItems(){
         return itemService.getAllItems();
     }
 
-    @GetMapping("{id}")
-    public Item getItem(@RequestParam String id){
+    @GetMapping("/{id}")
+    public Item getItem(@PathVariable String id){
         return itemService.getItemById(id);
     }
 
@@ -36,8 +35,9 @@ public class ItemController {
         itemService.addItem(item);
     }
 
-    @DeleteMapping("{id}")
-    public void deleteItem(@RequestParam String id){
+    @DeleteMapping("/{id}")
+    public void deleteItem(@PathVariable String id){
+
         itemService.deleteItemById(id);
     }
 }
