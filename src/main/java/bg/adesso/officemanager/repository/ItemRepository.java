@@ -4,6 +4,7 @@ import bg.adesso.officemanager.model.Item;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ItemRepository extends CrudRepository<Item, String> {
     @Override
@@ -11,6 +12,9 @@ public interface ItemRepository extends CrudRepository<Item, String> {
 
     @Override
     Item save(Item item);
+
+    @Override
+    Optional<Item> findById(String id);
 
     @Override
     void deleteById(String id);
