@@ -33,7 +33,7 @@ public class ItemController {
 
     @PostMapping
     public void addItem(@RequestBody Item item){
-        itemService.addItem(item);
+        itemService.addOrUpdateItem(item);
     }
 
     @DeleteMapping("{id}")

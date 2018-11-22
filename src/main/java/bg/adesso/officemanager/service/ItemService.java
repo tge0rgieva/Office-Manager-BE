@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Diese Klasse ist für Itemoperationsdienste wie das Auflisten von Items usw.
@@ -25,7 +26,22 @@ public class ItemService {
         return itemRepository.findAll().stream().filter(i -> i.getId().equals(id)).findFirst().get();
     }
 
-    public void addItem(Item item) {
+    public void addOrUpdateItem(Item item) {
+
+        if(item.getId() != null) {
+
+            Optional<Item> opt = itemRepository.findById(item.getId());
+
+            if(opt.isPresent()) {
+                Item updateItem = opt.get();
+                updateItem.setCategory(item.getCategory());
+                updateItem.setDescription(item.getDescription());
+                updateItem.setName(item.getName());
+                updateItem.setPictureUrl(item.getPictureUrl());
+                updateItem.setIsRequested(item.getIsRequested());
+            }
+        }
+
         itemRepository.save(item);
     }
 
