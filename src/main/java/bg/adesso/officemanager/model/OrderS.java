@@ -57,7 +57,7 @@ public class OrderS {
         this.isComplete = isComplete;
     }
 
-    public boolean isComplete() {
+    public boolean getIsComplete() {
         return this.isComplete;
     }
 
