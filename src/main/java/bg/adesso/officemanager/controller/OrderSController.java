@@ -19,16 +19,14 @@ public class OrderSController {
 
     @GetMapping
     public List<OrderS> getAllOrders(){
-
         List<OrderS> orders = new ArrayList<>();
         orderService.getAllOrders().forEach(d -> {orders.add(d);});
         return orders;
-
     }
 
     @GetMapping("{id}")
     public OrderS getOrder(@RequestParam String id){
-        return orderService.getOrder(id).get();
+        return orderService.getOrder(Long.parseLong(id)).get();
     }
 
     @PostMapping
@@ -38,6 +36,11 @@ public class OrderSController {
 
     @DeleteMapping("{id}")
     public void deleteOrder(@RequestParam String id){
-        orderService.deleteOrder(id);
+        orderService.deleteOrder(Long.parseLong(id));
+    }
+
+    @PutMapping
+    public void updateOrders(@RequestBody List<OrderS> orders){
+        orderService.updateOrderStatus(orders);
     }
 }

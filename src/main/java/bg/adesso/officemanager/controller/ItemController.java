@@ -27,7 +27,7 @@ public class ItemController {
 
     @GetMapping("/{id}")
     public Item getItem(@PathVariable String id){
-        return itemService.getItemById(id);
+        return itemService.getItemById(Long.parseLong(id));
     }
 
     @PostMapping
@@ -37,7 +37,6 @@ public class ItemController {
 
     @DeleteMapping("/{id}")
     public void deleteItem(@PathVariable String id){
-
-        itemService.deleteItemById(id);
+        itemService.deleteItemById(Long.parseLong(id));
     }
 }

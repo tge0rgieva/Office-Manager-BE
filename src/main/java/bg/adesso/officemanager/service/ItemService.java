@@ -22,8 +22,8 @@ public class ItemService {
         return itemRepository.findAll();
     }
 
-    public Item getItemById(String id) {
-        return itemRepository.findAll().stream().filter(i -> i.getId().equals(id)).findFirst().get();
+    public Item getItemById(Long id) {
+        return itemRepository.findById(id).get();
     }
 
     public void addOrUpdateItem(Item item) {
@@ -45,7 +45,8 @@ public class ItemService {
         itemRepository.save(item);
     }
 
-    public void deleteItemById(String id) {
+
+    public void deleteItemById(Long id) {
         itemRepository.deleteById(id);
     }
 }
