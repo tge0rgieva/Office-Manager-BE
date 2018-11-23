@@ -21,7 +21,6 @@ public class OrderSService {
     public OrderSService(OrderSRepository orderRepository,ItemRepository itemRepository) {
         this.orderRepository = orderRepository;
         this.itemRepository = itemRepository;
-
     }
 
     public Iterable<OrderS> getAllOrders() {
@@ -43,13 +42,10 @@ public class OrderSService {
     }
 
     public void updateOrderStatus (List<OrderS> orders){
-
         for (OrderS o: orders) {
             OrderS order = orderRepository.findById(o.getId()).get();
             order.setIsComplete(true);
             orderRepository.save(order);
-
         }
-
     }
 }

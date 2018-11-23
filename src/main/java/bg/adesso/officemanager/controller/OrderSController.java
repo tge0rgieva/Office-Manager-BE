@@ -19,11 +19,9 @@ public class OrderSController {
 
     @GetMapping
     public List<OrderS> getAllOrders(){
-
         List<OrderS> orders = new ArrayList<>();
         orderService.getAllOrders().forEach(d -> {orders.add(d);});
         return orders;
-
     }
 
     @GetMapping("{id}")
@@ -45,6 +43,4 @@ public class OrderSController {
     public void updateOrders(@RequestBody List<OrderS> orders){
         orderService.updateOrderStatus(orders);
     }
-
-
 }

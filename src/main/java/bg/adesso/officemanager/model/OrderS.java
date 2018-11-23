@@ -9,11 +9,13 @@ public class OrderS {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-
+ 
     private String order_giver_id;
+  
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "item_id")
     private Item item;
+  
     private Date order_date;
     private Boolean isComplete = false;
 
