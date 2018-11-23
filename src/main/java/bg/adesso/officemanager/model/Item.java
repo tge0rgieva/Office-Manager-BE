@@ -8,7 +8,7 @@ public class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
     private String name;
     private String category;
     private String description;
@@ -19,7 +19,7 @@ public class Item {
 
     }
 
-    public Item(String id, String name, String category, String description, String pictureUrl, Boolean isRequested) {
+    public Item(Long id, String name, String category, String description, String pictureUrl, Boolean isRequested) {
         this.id = id;
         this.name = name;
         this.category = category;
@@ -28,11 +28,11 @@ public class Item {
         this.isRequested = isRequested;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

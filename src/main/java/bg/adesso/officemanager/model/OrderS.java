@@ -10,22 +10,22 @@ public class OrderS {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
  
-    private String order_giver_id;
+    private Long order_giver_id;
   
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "item_id")
     private Item item;
   
     private Date order_date;
-    private Boolean isComplete = false;
+    private boolean isComplete = false;
 
     public OrderS() {
     }
 
-    public OrderS(Long id, Long order_giver_id, Long item_id, Date order_date) {
+    public OrderS(Long id, Long order_giver_id, Item item, Date order_date) {
         this.id = id;
         this.order_giver_id = order_giver_id;
-        this.item_id = item_id;
+        this.item = item;
         this.order_date = order_date;
     }
 
@@ -45,12 +45,20 @@ public class OrderS {
         this.order_giver_id = order_giver_id;
     }
 
-    public Long getItem_id() {
-        return item_id;
+    public Item getItem() {
+        return item;
     }
 
-    public void setItem_id(Long item_id) {
-        this.item_id = item_id;
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+    public void setIsComplete(boolean isComplete) {
+        this.isComplete = isComplete;
+    }
+
+    public boolean isComplete() {
+        return this.isComplete;
     }
 
     public Date getOrder_date() {

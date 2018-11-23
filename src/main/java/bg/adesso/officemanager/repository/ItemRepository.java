@@ -14,8 +14,8 @@ public interface ItemRepository extends CrudRepository<Item, Long> {
     Item save(Item item);
 
     @Override
-    Optional<Item> findById(String id);
+    Optional<Item> findById(Long id);
 
     @Override
-    void deleteById(String id);
+    void deleteById(Long id);
 }
